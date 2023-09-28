@@ -1,32 +1,29 @@
-import React from "react"
-import { GetStaticProps } from "next"
-import Layout from "../components/Layout"
-import Post, { PostProps } from "../components/Post"
+import Layout from "../components/Layout";
+import Post from "../components/Post";
 
-export const getStaticProps: GetStaticProps = async () => {
+console.log("index run");
+
+export const getStaticProps = async () => {
   const feed = [
     {
       id: "1",
       title: "Prisma is the perfect ORM for Next.js",
-      content: "[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!",
+      content:
+        "[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!",
       published: false,
       author: {
         name: "Nikolas Burk",
         email: "burk@prisma.io",
       },
     },
-  ]
-  return { 
-    props: { feed }, 
-    revalidate: 10 
-  }
-}
+  ];
+  return {
+    props: { feed },
+    revalidate: 10,
+  };
+};
 
-type Props = {
-  feed: PostProps[]
-}
-
-const Blog: React.FC<Props> = (props) => {
+const Blog = (props) => {
   return (
     <Layout>
       <div className="page">
@@ -54,7 +51,7 @@ const Blog: React.FC<Props> = (props) => {
         }
       `}</style>
     </Layout>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
